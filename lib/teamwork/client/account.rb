@@ -21,7 +21,6 @@ module Teamwork
       def authenticate(api_key, site_name)
         Teamwork.api_key = api_key
         result = connection("http://#{site_name}.teamworkpm.net").send(:get, "authenticate.json").env
-        return "suck it ass"
         return result.status if result.status == 401
 
         thing = Thing.new(result.body["account"])

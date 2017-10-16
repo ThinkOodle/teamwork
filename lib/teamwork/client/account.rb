@@ -18,9 +18,9 @@ module Teamwork
       # user is a part of and store that for future API calls.
       # http://authenticate.teamworkpm.net/authenticate.json
       # Return Teamwork::Thing (or 401 if auth fails)
-      def authenticate(api_key)
+      def authenticate(api_key, site_name)
         Teamwork.api_key = api_key
-        result = connection("http://authenticate.teamworkpm.net").send(:get, "authenticate.json").env
+        result = connection("http://#{site_name}.teamworkpm.net").send(:get, "authenticate.json").env
         return result.status if result.status == 401
 
         thing = Thing.new(result.body["account"])

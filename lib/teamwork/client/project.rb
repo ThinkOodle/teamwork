@@ -82,7 +82,7 @@ module Teamwork
       # GET a projects task lists
       # Return Teamwork::Thing
       def project_task_lists(id)
-        object_from_response(:get, "projects/#{id}/tasklists", "project")
+        objects_from_response(:get, "projects/#{id}/tasklists", "tasklists")
       end
 
       # PUT a start to a project

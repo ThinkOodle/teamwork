@@ -79,6 +79,12 @@ module Teamwork
         object_from_response(:get, "project/#{id}", "project")
       end
 
+      # GET a projects task lists
+      # Return Teamwork::Thing
+      def project_task_lists(id)
+        object_from_response(:get, "project/#{id}/tasklists", "project")
+      end
+
       # PUT a start to a project
       # Return Boolean
       def toggle_project_star(id, star = true)

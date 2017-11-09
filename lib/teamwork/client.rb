@@ -44,7 +44,8 @@ module Teamwork
     end
 
     def response(method, path, key, params, format)
-      send(method.to_sym, "#{path}#{format}", params).body
+      @body = send(method.to_sym, "#{path}#{format}", params).body
+      logger.debug("HI THERE #{@body}")
     end
 
     def get(path, params = nil)

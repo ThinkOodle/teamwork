@@ -59,8 +59,8 @@ module Teamwork
       #   changeFollowerIds :string  A comma separated list of user ids to add as followers for changes on this task
       #   private :int    Set to 1 to make the task Private. Setting a 0 will set the Task back to normal
 
-      def create_task(tasklist_id, options = {'content' => 'what the hell'})
-        object_from_response(:post, "tasklists/#{tasklist_id}/tasks", "todo-item", 'todo-items': options)
+      def create_task(tasklist_id, options = {})
+        object_from_response(:post, "tasklists/#{tasklist_id}/tasks", "todo-items", options)
       end
 
     end

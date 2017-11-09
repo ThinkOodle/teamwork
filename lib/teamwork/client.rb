@@ -54,6 +54,7 @@ module Teamwork
     end
 
     def post(path, params = nil)
+      Rails.logger.debug("These are the params #{params}")
       request(:post, path, params)
     end
 

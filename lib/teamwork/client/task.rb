@@ -60,7 +60,7 @@ module Teamwork
       #   private :int    Set to 1 to make the task Private. Setting a 0 will set the Task back to normal
 
       def create_task(tasklist_id, options = {})
-        object_from_response(:post, "tasklists/#{tasklist_id}/tasks", "todo-items", options)
+        object_from_response(:post, "tasklists/#{tasklist_id}/tasks", "todo-items", {content: "this is a test task"})
       end
 
     end

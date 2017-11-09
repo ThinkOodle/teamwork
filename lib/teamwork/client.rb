@@ -40,13 +40,15 @@ module Teamwork
     end
 
     def object_from_response(method, path, key, params = nil, format = ".json")
-      Teamwork::Thing.new(response(method, path, key, params, format)[key])
+      if key.nil?
+        Teamwork::Thing.new(response(method, path, key, params, format))
+      else
+        Teamwork::Thing.new(response(method, path, key, params, format)[key])
+      end
     end
 
     def response(method, path, key, params, format)
       @body = send(method.to_sym, "#{path}#{format}", params).body
-      Rails.logger.debug("HI THERE #{@body}")
-      return @body
     end
 
     def get(path, params = nil)
@@ -54,7 +56,6 @@ module Teamwork
     end
 
     def post(path, params = nil)
-      Rails.logger.debug("These are the params #{params}")
       request(:post, path, params)
     end
 

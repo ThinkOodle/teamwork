@@ -96,7 +96,7 @@ module Teamwork
       # POST a new project
       # Return Teamwork::Thing
       def create_project(options = {})
-        object_from_response(:post, "projects", "project", project: options)
+        object_from_response(:post, "projects", nil, project: options)
       end
 
       # PUT a current project

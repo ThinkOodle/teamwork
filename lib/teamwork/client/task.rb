@@ -42,6 +42,27 @@ module Teamwork
         objects_from_response(:get, "tasks", "todo-items", options)
       end
 
+
+      # Post a new Task
+      # options:
+      #   *content: string (name of the task you are adding)
+      #   description :string Tasks can be assigned a description.
+      #   parentTaskId :string Set this to the ID of a parent task if you wish to make your task a subtask.
+      #   progress :int Set the progress from 0 to 90
+      #   notify :boolean This parameter can be set to true to notify people assigned to this task by email.
+      #   responsible-party-id :string This can be used to assign the new task to a person or group of people. For example: -1 would assign the task to everyone 32 would assign the task to user 32. 32,55 would assign the task to users 32 and 55 etc.
+      #   start-date :string Tasks can be assigned a date to start on. The format should be YYYYMMDD.
+      #   due-date :string Tasks can be assigned a date for when they are due to be finished. The format should be YYYYMMDD.
+      #   priority :string Tasks can be assigned the following priorities: not set low medium high
+      #   tags :string  A comma separated list of tags for the task
+      #   commentFollowerIds :string A comma separated list of user ids to add as followers for comments on this task
+      #   changeFollowerIds :string  A comma separated list of user ids to add as followers for changes on this task
+      #   private :int    Set to 1 to make the task Private. Setting a 0 will set the Task back to normal
+
+      def create_task(tasklist_id, options = {})
+        object_from_response(:post, "tasklists/#{tasklist_id}/tasks", "todo-item", options)
+      end
+
     end
 
   end
